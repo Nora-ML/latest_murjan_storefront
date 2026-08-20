@@ -1,0 +1,49 @@
+.layout_container {
+	position: fixed;
+	/* border: yellow dashed 2px; */
+	top: 0;
+	width: 100%;
+	height: auto;
+	margin: 1px auto;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+
+	.landing_container {
+		background-color: var(--light_80);
+
+		flex-basis: 100%;
+		height: auto;
+
+		display: flex;
+		flex-wrap: wrap;
+
+		.content-2 {
+			height: 150vh;
+			flex-basis: 100%;
+
+			position: relative;
+
+			background-color: rgb(25, 121, 204);
+			.content__text {
+				font-size: 26px;
+				color: rgba(188, 12, 188, 0.608);
+				padding: 10vh 10vw;
+				line-height: 50px;
+			}
+		}
+	}
+}
+
+@keyframes heroHeaderSlideUP {
+	0% {
+		top: 50%;
+		color: var(--darkest);
+	}
+	100% {
+		top: 0%;
+
+		color: var(--light_80);
+	}
+}

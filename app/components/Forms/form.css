@@ -1,0 +1,134 @@
+.main_form {
+	border: var(--light_85) solid 1px;
+	background-color: transparent; /*adjusted 5-feb was var(--light_89)*/
+
+	overflow-y: auto;
+	overflow-x: hidden;
+
+	row-gap: 5px;
+	padding: 3%;
+
+	width: 100%;
+	min-height: 100%;
+	height: auto;
+
+	display: flex;
+	flex-direction: column;
+	align-content: space-evenly;
+	align-items: center;
+
+	animation: slideInForm 0.8s ease-in-out forwards;
+
+	@media (width>640px) {
+		flex-direction: unset;
+		flex-wrap: wrap;
+		overflow: hidden;
+	}
+
+	& .form_header {
+		flex-basis: 100%;
+		height: 10%;
+
+		color: var(--counter_dark);
+
+		text-transform: uppercase;
+		word-break: keep-all;
+		word-spacing: 5px;
+
+		font-size: clamp(28px, 5vw, 30px);
+		padding: 1% 0;
+
+		margin-block: 0;
+	}
+
+	& .main_form_section {
+		background-color: transparent; /* adjusted 5-feb was var(--light_89)*/
+		width: 100%;
+
+		height: auto;
+
+		row-gap: 10px;
+		display: flex;
+		flex-wrap: wrap;
+
+		@media (width>640px) {
+			&:not(.narrow) {
+				overflow-y: auto;
+				flex-basis: 100%;
+				/*height: calc(100% - 30%); removed 5-feb */
+				max-height: calc(100% - 30%); /*added 5-feb */
+				height: auto; /*added 5 feb*/
+				flex-basis: 70%;
+				column-gap: 7px;
+				padding-right: 2%;
+
+				flex-grow: 1; /*added 5-feb*/
+			}
+		}
+	}
+
+	& .subform_section {
+		background-color: var(--light_89);
+		border: var(--light_80) 1px solid;
+		width: 100%;
+
+		height: auto;
+
+		padding: 5% 2%;
+		border-radius: 5px;
+
+		column-gap: 7px;
+		row-gap: 10px;
+		display: flex;
+		flex-wrap: wrap;
+
+		@media (width>640px) {
+			&:not(.narrow) {
+				flex-basis: 28%;
+			}
+		}
+	}
+
+	& .button_form {
+		width: 100%;
+		min-height: 10%;
+		height: auto;
+
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		column-gap: 3%;
+
+		@media (width>640px) {
+			padding-top: 2%;
+			flex-basis: 100%;
+			height: 10%;
+		}
+	}
+
+	&.hide {
+		animation: slideOutForm 0.8s ease-in-out forwards;
+	}
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes slideOutForm {
+	0% {
+		opacity: 1;
+		transform: translate(0%, 0%);
+		clip-path: inset(0% 0% 0% 0%);
+	}
+	100% {
+		opacity: 0;
+		transform: translate(40%, 0.5%);
+		clip-path: inset(0% 0% 0% 100%);
+	}
+}

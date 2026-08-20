@@ -1,0 +1,96 @@
+.message_wrapper {
+	background-color: rgba(var(--light_87), 0.5);
+	backdrop-filter: blur(5.5px);
+
+	overflow: hidden;
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+
+	opacity: 1;
+
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	align-items: center;
+
+	transition: all 0.5s ease-in;
+
+	&.hide {
+		z-index: -2;
+		opacity: 0;
+		backdrop-filter: blur(0);
+		transition: all 0.5s ease-in;
+	}
+
+	& .message {
+		margin: 0 auto;
+		opacity: 0;
+		color: var(--counter_color);
+
+		width: 90%;
+		padding: 2em 1.5em;
+		font-size: 14px;
+
+		text-align: center;
+
+		animation-name: fadeIn;
+		animation-fill-mode: forwards;
+		animation-timing-function: ease-in;
+		animation-duration: 0.5s;
+
+		&.success_message {
+			background-color: var(--success);
+		}
+		&.loading_message {
+			border: 2px dotted var(--counter_dark);
+			border-top: none;
+			opacity: 1;
+			border-block: none;
+			width: 60px;
+			border-radius: 50px;
+			animation: rotateLoading 0.5s ease-in-out infinite forwards;
+		}
+	}
+}
+
+.form_error_message {
+	background-color: var(--alert);
+	color: var(--light_87);
+
+	flex-basis: 100%;
+	padding: 1em 1.5em;
+	line-height: 1.5em;
+	margin-block: 0;
+
+	font-size: 13.5px;
+	text-align: center;
+
+	height: auto;
+
+	opacity: 0;
+	transition: 0.3s ease;
+
+	@media (width>480px) and (max-aspect-ratio: 0.8) {
+		height: 8%;
+		max-width: 65vw;
+	}
+
+	&.display {
+		animation-name: fadeIn;
+		animation-fill-mode: both;
+		animation-timing-function: ease-in;
+		animation-duration: 0.5s;
+	}
+}
+
+@keyframes rotateLoading {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}

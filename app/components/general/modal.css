@@ -1,0 +1,40 @@
+.modal_backdrop {
+	position: fixed;
+	background-color: rgba(82, 67, 53, 0.8);
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 100vw;
+	height: 100vh;
+
+	z-index: -2;
+	opacity: 0;
+	backdrop-filter: blur(0px);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	animation-name: fadeInModal;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-in;
+	animation-duration: 0.5s;
+
+	.general_modal {
+		box-shadow: 1px 1px 7px 3px var(--counter_dark);
+		width: 70%;
+		height: auto;
+
+		@media (width>480px) {
+			width: 40%;
+		}
+	}
+}
+@keyframes fadeInModal {
+	to {
+		z-index: 1000;
+		opacity: 1;
+		backdrop-filter: blur(5.5px);
+	}
+}

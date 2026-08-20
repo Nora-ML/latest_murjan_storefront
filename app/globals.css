@@ -1,0 +1,137 @@
+html {
+	box-sizing: border-box;
+	--darkest: #000000;
+	--light_80: hsl(31, 50%, 80%);
+	--light_85: hsl(31, 51%, 85%);
+	--light_87: hsl(31, 51%, 87%);
+	--light_89: hsl(31, 51%, 89%);
+	--light_91: hsl(31, 51%, 91%);
+	--light_85_a: rgba(236, 217, 197, 0.8);
+	--another_light: #ead4be;
+	--counter_med: #bcbcbc;
+	--counter_dark: #524335;
+	--alert: hsl(0, 100%, 70%);
+	--success: hsl(120, 63%, 81%);
+	--shadow: #281e3254;
+	--nav_height: 7vh;
+	--nav_width: 10vh;
+}
+
+* {
+	box-sizing: border-box;
+}
+body {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: auto;
+	background-color: var(--light_85);
+
+	overflow-x: hidden;
+	overflow-y: auto;
+
+	font-size: 16px;
+	font-family: "Cinzel", serif;
+	/* border: red 2px solid; */
+}
+*::-webkit-scrollbar {
+	width: 0.7em;
+	background-color: var(--light_85);
+}
+*::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 6px var(--light_80);
+}
+*::-webkit-scrollbar-thumb {
+	background-color: var(--light_91);
+	border-radius: 50px;
+	outline: 1px solid var(--light_80);
+}
+
+/* a {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+} */
+
+.header {
+	position: fixed;
+	left: 50%;
+	z-index: 100;
+	top: 50%;
+	margin-block: 5px;
+	color: var(--darkest);
+	/* animation-name: slideUP;
+	animation-duration: 4s;
+	animation-fill-mode: forwards;
+	animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); */
+}
+
+.main_layout-container {
+	width: 100%;
+	height: auto;
+
+	position: fixed;
+	top: 0;
+
+	background-color: var(--light_85);
+	border: 1px var(--light_87) solid;
+
+	display: flex;
+	flex-direction: column;
+	align-content: flex-end;
+	justify-content: center;
+}
+.reveal_animation {
+	position: relative;
+	overflow: hidden;
+	/* display: flex; */
+
+	transform-origin: left bottom;
+	animation-name: justHeight;
+	animation-duration: 1s;
+	animation-fill-mode: both;
+	animation-timing-function: cubic-bezier(1, 0.2, 0.5, 1);
+}
+
+.text_slide_animation {
+	margin: auto;
+
+	transform-origin: left bottom;
+	animation-name: slideTextUp;
+	animation-duration: 1s;
+	animation-fill-mode: both;
+	animation-timing-function: cubic-bezier(1, 0.2, 0.5, 1);
+}
+
+@keyframes justHeight {
+	from {
+		/* transform: translateY(50%) scale(1.05); */
+		clip-path: inset(0% 0% 100% 0%);
+	}
+	to {
+		/* transform: translateY(0%) scale(1); */
+		clip-path: inset(-20% 0% 0% 0%);
+	}
+}
+
+@keyframes slideTextUp {
+	from {
+		transform: translateY(150%) scale(1.1);
+	}
+	to {
+		transform: translateY(0%) scale(1);
+	}
+}
+@keyframes slideInForm {
+	from {
+		transform: translate(-20%, -0.5%);
+		clip-path: inset(0% 100% 0% 0%);
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+		transform: translate(0%, 0%);
+		clip-path: inset(0% 0% 0% 0%);
+	}
+}

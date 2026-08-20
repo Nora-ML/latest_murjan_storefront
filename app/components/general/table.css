@@ -1,0 +1,94 @@
+.table {
+	/* background-color: var(--light_91); */
+	margin: 0 auto;
+	font-size: 12px;
+	width: 100%;
+	padding: 0% 2%;
+
+	thead {
+		background-color: var(--light_91);
+		color: var(--counter_dark);
+		position: sticky;
+		top: 0;
+
+		tr {
+			background-color: var(--light_91);
+			outline: solid 2px var(--light_91);
+			border-radius: 2px;
+			th {
+				padding: 0.5em 1em;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				/* width: 0.5%; */
+				&:not(:first-child, :last-child) {
+					/* width: 10%; */
+				}
+			}
+		}
+	}
+	tbody {
+		background-color: var(--light_91);
+
+		tr {
+			text-align: left;
+			outline: solid 2px white;
+			border-radius: 2px;
+			height: 100%;
+
+			th {
+				padding: 0.5em;
+				color: var(--counter_dark);
+				width: auto;
+
+				.thumbnail_img {
+					width: 50px;
+					height: 50px;
+					border: none;
+					margin: 0 auto;
+					display: block;
+
+					&.large {
+						width: 100px;
+						height: 100px;
+					}
+				}
+				.delete_icon-wrapper {
+					width: 30px;
+					height: 30px;
+					border: none;
+					margin: 0 auto;
+					display: block;
+					cursor: pointer;
+
+					& .delete_icon {
+						width: 100%;
+						height: 100%;
+					}
+				}
+				.modifyquantity_wrapper {
+					display: inline-flex;
+					justify-content: right;
+					flex-wrap: wrap;
+					width: 40%;
+					height: auto;
+
+					& .modifyquantity_icon {
+						flex-basis: 51%;
+						height: 15px;
+						margin: 2px 0;
+						cursor: pointer;
+					}
+				}
+			}
+		}
+	}
+	tfoot {
+		tr {
+			th {
+				text-align: left;
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+}

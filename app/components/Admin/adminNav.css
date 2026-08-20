@@ -1,0 +1,30 @@
+.admin_nav_list {
+	margin: 0;
+	padding: 0;
+
+	/* border: magenta 2px solid; */
+
+	list-style: none;
+	padding-block: 0;
+	margin-block: 0;
+
+	li {
+		color: var(--counter_dark);
+		font-size: 18px;
+
+		display: block;
+		text-align: center;
+
+		padding: 1em 1.5em;
+		cursor: pointer;
+
+		&.active {
+			background-color: var(--light_87);
+		}
+
+		a {
+			color: var(--counter_dark);
+			text-decoration: none;
+		}
+	}
+}

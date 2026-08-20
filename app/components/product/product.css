@@ -1,0 +1,456 @@
+.product_page_container {
+	width: 100%;
+	height: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
+	background-color: var(--light_85);
+
+	position: fixed;
+	top: 0vh;
+	bottom: 0;
+	left: 0vw;
+	right: 0vw;
+	z-index: 4;
+	display: flex;
+	flex-wrap: wrap;
+
+	.product_maindata-wrapper {
+		width: 100%;
+		height: 100vh;
+
+		position: relative;
+		background-color: var(--light_85);
+		background-color: blue;
+
+		display: flex;
+		flex-wrap: wrap;
+
+		.product_image_container {
+			overflow: hidden;
+			position: relative;
+			background-color: var(--light_89);
+			width: 100%;
+			height: 50%;
+
+			/*NEWWW*/
+			display: flex;
+			align-items: flex-end;
+			justify-content: center;
+			overflow: hidden;
+			/* end */
+
+			@media (width > 769px) or (height <450px) {
+				width: 55%;
+				height: 100%;
+			}
+
+			.shop_item-img-new {
+				background-color: var(--light_89);
+				position: absolute;
+				--cardWidth: 100px;
+				--margin: 5px;
+				--cardHeight: 100px;
+				--cardWdthMargin: calc(var(--margin) + var(--cardWidth));
+
+				object-position: 50% 50%;
+
+				width: var(--cardWidth);
+				margin-right: var(--margin);
+				height: var(--cardHeight);
+				border-radius: 5px;
+				object-fit: contain;
+				/* border: var(--light_85) 1px solid; */
+				box-shadow: 0 2px 8px 1px var(--counter_dark);
+				z-index: 2;
+				transform: translate(100vw, 10vh);
+
+				&:first-of-type {
+					z-index: 2;
+					scale: 1;
+					transform: none;
+					margin-right: 0;
+					width: 100%;
+					box-shadow: none;
+					height: 100%;
+				}
+			}
+		}
+
+		.product_details-section {
+			width: 100%;
+			height: 50%;
+			position: relative;
+			background-color: var(--light_87);
+			overflow: hidden;
+
+			@media (width > 650px) or (height <450px) {
+				width: 45%;
+				height: 100%;
+				padding-top: 12%;
+			}
+
+			.product_details_container {
+				text-transform: capitalize;
+				background-color: var(--light_87);
+
+				position: relative;
+				font-family: "inconsolata", sans-serif;
+
+				width: 100%;
+				height: 100%;
+				padding: 0 5%;
+
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				justify-content: center;
+
+				clip-path: inset(0% 100% 0% 0%);
+				opacity: 1;
+
+				animation-name: slideInContainer;
+				animation-timing-function: ease-in-out;
+				animation-duration: 0.6s;
+				animation-fill-mode: forwards;
+
+				& .product_details {
+					width: 100%;
+					transform: translate(-30%, -10%);
+					opacity: 0;
+
+					animation-name: slideIn;
+					animation-timing-function: ease-in-out;
+					animation-duration: 0.4s;
+					animation-fill-mode: forwards;
+
+					&.collection-name {
+						font-size: clamp(13px, 1.8vw, 18px);
+						font-weight: 300;
+						margin-block-start: 0.5em;
+						margin-block-end: 0;
+						animation-delay: 0.1s;
+					}
+					&.item-name {
+						font-size: clamp(18px, 10vh, 2.6em);
+						margin-block: 0.15em;
+						font-weight: 400;
+						letter-spacing: -2px;
+						animation-delay: 0.2s;
+					}
+					&.product_details-options {
+						background-color: var(--light_87);
+
+						max-height: 40%; /* added 5-feb*/
+						min-height: 35%; /* added 5-feb*/
+						height: auto; /* adjusted 5-feb*/
+						margin-top: 1%;
+						display: flex;
+						flex-direction: row;
+						justify-content: space-between;
+						align-items: flex-start; /* added 5-feb*/
+						animation-delay: 0.3s;
+
+						.action-box {
+							position: relative;
+							width: calc(97% / 3);
+							border: none;
+							border-bottom: #693f41 solid 1px;
+
+							display: flex;
+							flex-direction: column;
+							align-items: center;
+							justify-content: center;
+
+							.action {
+								font-size: clamp(13px, 1.7vw, 18px);
+
+								font-weight: 400;
+								margin-block-start: 0.5vw;
+								margin-block-end: 10%;
+								align-self: flex-start;
+
+								cursor: pointer;
+							}
+						}
+					}
+					&.product_details-details {
+						background-color: var(--light_87);
+						position: relative;
+						overflow: hidden;
+						display: flex;
+						flex-direction: column;
+						height: auto; /* adjusted feb ws 35%*/
+						animation-delay: 0.5s;
+						& .product-details-control {
+							margin-block: 12px;
+
+							list-style: none;
+							padding-inline-start: 0;
+							display: flex;
+							flex-direction: row;
+							justify-content: space-between;
+							.control {
+								font-size: clamp(13px, 1.7vw, 18px);
+								font-weight: 400;
+								margin-block-start: 0.5vw;
+								margin-block-end: 0.5vw;
+								opacity: 0.5;
+
+								cursor: pointer;
+								&.active {
+									opacity: 1;
+								}
+							}
+						}
+						& .product-details-paragraph {
+							position: relative;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 150px;
+							.details {
+								position: absolute;
+								height: auto;
+
+								margin-block-start: 0.5vw;
+								margin-block-end: 0.5vw;
+
+								opacity: 0;
+								transform: translate(-30%, -10%);
+								animation-name: slideOut;
+								animation-timing-function: cubic-bezier(0.5, 0.05, 0.8, 1);
+								animation-duration: 0.5s;
+								animation-fill-mode: both;
+
+								&.active {
+									animation-name: slideIn;
+									animation-timing-function: cubic-bezier(0.5, 0.05, 0.8, 1);
+									animation-duration: 0.6s;
+									animation-delay: 0.5s;
+									animation-fill-mode: forwards;
+								}
+							}
+						}
+					}
+				}
+			}
+			& .close {
+				position: absolute;
+				top: 1%;
+				right: 2%;
+				background-color: transparent;
+				height: 28px;
+				width: 30px;
+				padding: 5px 10px;
+				z-index: 10;
+
+				@media (width > 650px) {
+					top: 15%;
+					right: 5%;
+				}
+
+				& .close_stick {
+					width: 100%;
+					height: 3px;
+					color: black;
+					position: absolute;
+					top: 12px;
+
+					background-color: var(--counter_dark);
+
+					left: 50%;
+					transform: translateX(-50%);
+					width: 0;
+					transition: all 0.5s ease;
+				}
+
+				&.active {
+					& .close_stick {
+						left: 0;
+						width: 100%;
+						transition: all 0.5s ease;
+						&:first-of-type {
+							transform: rotate(-140deg);
+						}
+
+						&:nth-of-type(4n + 2) {
+							transform: rotate(140deg);
+						}
+					}
+				}
+			}
+			& .product_order_container,
+			& .product_signin_container {
+				background-color: var(--light_87);
+				text-transform: capitalize;
+
+				padding: 0 5%;
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+
+				position: absolute;
+
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+
+				transform: translate(-50%, -10%);
+				clip-path: inset(0% 100% 0% 0%);
+				opacity: 0;
+
+				& .product_order_details,
+				& .product_signin_details {
+					background-color: #ffedd759;
+					width: 100%;
+					margin-top: 5vh;
+
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					justify-content: space-between;
+
+					opacity: 0;
+					transform: translate(-30%, -10%);
+				}
+				& .product_enquiry {
+					height: 5vh;
+
+					transform: translate(-30%, -10%);
+					opacity: 0;
+					.collection-name {
+						font-size: 22px;
+						margin-block-start: 5px;
+						margin-block-end: 5px;
+					}
+				}
+			}
+			&.active {
+				& .product_details_container {
+					animation-name: slideOutContainer;
+					animation-timing-function: ease-in-out;
+					animation-duration: 0.8s;
+					animation-fill-mode: forwards;
+				}
+
+				& .product_details {
+					animation-name: slideOut;
+					animation-timing-function: ease-in-out;
+					animation-duration: 0.6s;
+					/* animation-delay: 0.5s; */
+					animation-fill-mode: forwards;
+				}
+
+				&.personalize {
+					& .product_order_container {
+						animation-name: slideInContainer;
+						animation-timing-function: ease-in-out;
+						animation-duration: 0.8s;
+						animation-fill-mode: forwards;
+
+						& .product_order_details,
+						& .product_enquiry {
+							animation-name: slideIn;
+							animation-timing-function: cubic-bezier(0.05, 0.45, 0.2, 1);
+							animation-duration: 0.6s;
+							animation-fill-mode: forwards;
+						}
+					}
+				}
+				&.user {
+					& .product_signin_container {
+						animation-name: slideInContainer;
+						animation-timing-function: ease-in-out;
+						animation-duration: 0.8s;
+						animation-fill-mode: forwards;
+
+						& .product_signin_details {
+							animation-name: slideIn;
+							animation-timing-function: cubic-bezier(0.05, 0.45, 0.2, 1);
+							animation-duration: 0.6s;
+							animation-fill-mode: forwards;
+						}
+					}
+				}
+			}
+			&.deactive {
+				&.personalize {
+					& .product_order_container {
+						animation-name: slideOutContainer;
+						animation-timing-function: ease-in-out;
+						animation-duration: 0.8s;
+						animation-fill-mode: forwards;
+						& .product_order_details,
+						& .product_enquiry {
+							animation-name: slideOut;
+							animation-timing-function: cubic-bezier(0.05, 0.45, 0.2, 1);
+							animation-duration: 0.6s;
+							animation-fill-mode: forwards;
+						}
+					}
+				}
+
+				&.user {
+					& .product_signin_container {
+						animation-name: slideOutContainer;
+						animation-timing-function: ease-in-out;
+						animation-duration: 0.8s;
+						animation-fill-mode: forwards;
+						& .product_signin_details {
+							animation-name: slideOut;
+							animation-timing-function: cubic-bezier(0.05, 0.45, 0.2, 1);
+							animation-duration: 0.6s;
+							animation-fill-mode: forwards;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@keyframes slideInContainer {
+	from {
+		transform: translate(-50%, -10%);
+		clip-path: inset(0% 100% 0% 0%);
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+		transform: translate(0%, 0%);
+		clip-path: inset(0% 0% 0% 0%);
+	}
+}
+@keyframes slideOutContainer {
+	0% {
+		opacity: 1;
+		transform: translate(0%, 0%);
+		clip-path: inset(0% 0% 0% 0%);
+	}
+	50% {
+		opacity: 0;
+	}
+	100% {
+		transform: translate(50%, -1%);
+		clip-path: inset(0% 0% 100% 0%);
+		opacity: 0;
+	}
+}
+@keyframes slideIn {
+	to {
+		opacity: 1;
+		transform: translate(0%, 0%);
+	}
+}
+@keyframes slideOut {
+	from {
+		transform: translate(0%, 0%);
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+		transform: translate(100%, 10%);
+	}
+}

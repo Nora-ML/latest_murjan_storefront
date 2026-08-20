@@ -1,0 +1,301 @@
+.post_hero-container {
+	/* //border: red 2px solid; */
+	background-color: var(--light_80);
+	flex-basis: 100%;
+
+	min-height: 55vh;
+	max-height: 100vh;
+	height: auto;
+
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	@media screen and (min-width: 1024px) {
+		padding-bottom: 5%;
+	}
+
+	.separator {
+		position: absolute;
+		display: inline-block;
+		border: 0;
+
+		top: 0;
+		transform: translateY(-50%);
+		left: 0;
+		z-index: 1;
+
+		pointer-events: none;
+		width: clamp(150px, 100vw, 2000px);
+		height: clamp(100px, 15vw, 300px);
+
+		.path-anim {
+			border: blue solid 2px;
+			fill: red;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	.main_posthero_header {
+		/* //border: red 1px dashed; */
+		background-color: var(--light_80);
+
+		font-size: clamp(10px, 6vw, 40px);
+		font-weight: 300;
+
+		font-family: auto;
+		margin-block-start: 3%;
+		margin-block-end: 1%;
+		line-height: 2rem;
+
+		animation-play-state: paused;
+
+		& .text_slide_animation {
+			animation-play-state: paused;
+		}
+	}
+	.sub_posthero_header {
+		/* //border: red 1px dashed; */
+		background-color: #e6ccb2;
+
+		font-size: clamp(10px, 4.2vw, 30px);
+		font-weight: 300;
+
+		font-family: auto;
+		margin-block-start: 1%;
+		margin-block-end: 3%;
+		text-transform: capitalize;
+
+		animation-play-state: paused;
+		& .text_slide_animation {
+			animation-play-state: paused;
+		}
+	}
+
+	.image-main-container {
+		background-color: var(--light_80);
+		overflow: hidden;
+
+		width: clamp(250px, 70vw, 1200px);
+		height: clamp(180px, 50vw, 750px);
+
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: space-between;
+		align-items: center;
+
+		.i-con {
+			/* 			border: blue 2px dashed; */
+			position: relative;
+
+			overflow: hidden;
+			background-color: transparent;
+
+			border-radius: 5px;
+			width: 48%;
+			height: 100%;
+
+			.post_hero_img {
+				/*  //border: green 2px dashed; */
+
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				object-fit: cover;
+			}
+		}
+	}
+	.sub2_posthero_header {
+		/* //border: red 1px dashed; */
+		background-color: transparent;
+		font-size: clamp(10px, 4.2vw, 22px);
+		text-align: center;
+		margin-block-start: 3%;
+		margin-block-end: 0.5vw;
+		font-weight: 200;
+		letter-spacing: 0.1rem;
+		font-style: italic;
+
+		font-family: "Cormorant Infant", serif;
+		text-transform: capitalize;
+	}
+
+	.image-container {
+		clip-path: inset(100% 0% 0% 0%);
+
+		animation-name: imageReveal;
+		animation-duration: 2s;
+		animation-timing-function: ease-in-out;
+		animation-fill-mode: forwards;
+		animation-play-state: paused;
+		&:nth-of-type(2n) {
+			animation-delay: 0.1s;
+		}
+		& .image_slide_animation {
+			animation-name: imageScaleandSlide;
+			animation-duration: 2s;
+			animation-timing-function: ease-in-out;
+			animation-fill-mode: forwards;
+			animation-play-state: paused;
+		}
+	}
+
+	&.trigger_postHero_anim {
+		.main_posthero_header {
+			animation-play-state: running;
+			& .text_slide_animation {
+				animation-play-state: running;
+			}
+		}
+		.sub_posthero_header {
+			animation-play-state: running;
+			animation-delay: 0.3s;
+			& .text_slide_animation {
+				animation-play-state: running;
+				animation-delay: 0.3s;
+			}
+		}
+		.image-container {
+			animation-play-state: running;
+			animation-delay: 0.3s;
+			&:nth-of-type(2n) {
+				animation-delay: 0.4s;
+			}
+			& .image_slide_animation {
+				animation-play-state: running;
+				animation-delay: 0.3s;
+				&:nth-of-type(2n) {
+					animation-delay: 0.4s;
+				}
+			}
+		}
+	}
+}
+
+@keyframes imageReveal {
+	from {
+		clip-path: inset(100% 0% 0% 0%);
+	}
+	to {
+		clip-path: inset(0% 0% 0% 0%);
+	}
+}
+@keyframes imageScaleandSlide {
+	from {
+		transform: translateY(-30%);
+		scale: 1.4;
+	}
+	to {
+		transform: translateY(0%);
+		scale: 1;
+	}
+}
+
+/* useEffect(() => {
+	console.log("---- Post Hero -- useEffect, wait ...");
+	let ctx = gsap.context(() => {
+		// animating the svg to a wave effect on scroll
+		const pathTo = document.querySelector(".path-anim").dataset.pathTo;
+		gsap
+			.timeline({
+				scrollTrigger: {
+					trigger: ".separator",
+					start: "top center",
+					/* markers: {
+							endColor: "purple",
+							startColor: "purple",
+							fontSize: "14px",
+						}, 
+					end: "bottom+=100 top",
+					scrub: true,
+				},
+			})
+			.to(".path-anim", {
+				ease: "none",
+				attr: { d: pathTo },
+			});
+
+		const anime = (trigger, trigger2, start, end, direction, duration) => {
+			const tl = gsap.timeline({
+				scrollTrigger: {
+					trigger: trigger,
+					start: start,
+					toggleActions: "play complete play none",
+					end: end,
+					/* markers: {
+						endColor: "purple",
+						startColor: "purple",
+						fontSize: "14px",
+					}, 
+				},
+			});
+			tl.fromTo(
+				trigger,
+				{
+					clipPath: `${
+						direction === "top-bottom"
+							? "inset(0% 0% 100% 0%)"
+							: "inset(100% 0% 0% 0%)"
+					}`,
+				},
+				{
+					clipPath: "inset(0% 0% 0% 0%)",
+					duration: duration,
+					ease: "none",
+					stagger: 0.1,
+				}
+			);
+
+
+			if (trigger2) {
+				tl.fromTo(
+					trigger2,
+					{
+						scale: 1.3,
+					},
+					{
+						scale: 1,
+						ease: "none",
+						duration: 2,
+						stagger: 0.4,
+					},
+					"-0.5"
+				);
+			}
+
+			tl.set(trigger, { clipPath: "inset(0% 0% 0% 0%)" });
+		};
+		anime(
+			".i-con",
+			".post_hero_img",
+			"top center",
+			"bottom+=40% top",
+			"top-bottom",
+			1
+		);
+		anime(
+			".main_posthero_header",
+			"",
+			"top center",
+			"bottom",
+			"bottom-up",
+			0.7
+		);
+		anime(
+			".sub_posthero_header",
+			"",
+			"top center",
+			"bottom",
+			"bottom-up",
+			0.5
+		);
+
+		ScrollTrigger.normalizeScroll(true);
+		ScrollTrigger.refresh();
+	}, app);
+	return () => ctx.revert();
+}); */
